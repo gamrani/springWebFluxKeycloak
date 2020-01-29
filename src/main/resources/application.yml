@@ -1,0 +1,24 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+spring:
+  data:
+    mongodb:
+      port: 27017
+  jackson:
+    date-format: com.fasterxml.jackson.databind.util.StdDateFormat
+    default-property-inclusion: non_null
+  security:
+    user:
+      password: root
+
+server:
+  error:
+    include-stacktrace: never
+  port: 9091
