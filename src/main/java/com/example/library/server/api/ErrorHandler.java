@@ -8,8 +8,17 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import reactor.core.publisher.Mono;
 
+import java.nio.file.AccessDeniedException;
+
 @RestControllerAdvice
 public class ErrorHandler {
+
+  @ExceptionHandler(AccessDeniedException.class)
+  public Mono<ResponseEntity<String>> handle(AccessDeniedException ex){
+    Logger logger = LoggerFactory.getLogger(this.getClass());
+    logger.error(ex.getMessage());
+    return Mono.just(ResponseEntity.status(HttpStatus.FORBIDDEN).build());
+  }
 
   @ExceptionHandler(RuntimeException.class)
   public Mono<ResponseEntity<String>> handle(RuntimeException ex) {
