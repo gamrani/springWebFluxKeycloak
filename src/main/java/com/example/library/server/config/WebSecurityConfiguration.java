@@ -25,8 +25,10 @@ public class WebSecurityConfiguration {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
+    @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity serverHttpSecurity){
-        return serverHttpSecurity.authorizeExchange()
+        return serverHttpSecurity.csrf().disable()
+                .authorizeExchange()
                 .pathMatchers(HttpMethod.POST, "/books/{bookId}/borrow")
                 .hasRole(Role.LIBRARY_USER.name())
                 .pathMatchers(HttpMethod.POST, "/books/{bookId}/return")
@@ -35,6 +37,8 @@ public class WebSecurityConfiguration {
                 .hasRole(Role.LIBRARY_CURATOR.name())
                 .pathMatchers(HttpMethod.DELETE, "/books")
                 .hasRole(Role.LIBRARY_CURATOR.name())
+                .pathMatchers(HttpMethod.GET,"/books")
+                .authenticated()
                 .pathMatchers("/users/**")
                 .hasRole(Role.LIBRARY_ADMIN.name())
                 .anyExchange()
