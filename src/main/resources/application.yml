@@ -21,9 +21,9 @@ spring:
       client:
         registration:
           keycloak:
-              client-id: library
-              client-secret: ecbcd764-98e1-479d-a4d0-60c4e72a9ffe
-              clientName: library
+              client-id: account
+              client-secret: 8ba5b780-dd72-4d46-9521-3be3154a6aa1
+              clientName: account
               authorization-grant-type: authorization_code
               redirectUri: '{baseUrl}/login/oauth2/code/{registrationId}'
               scope:
@@ -31,10 +31,10 @@ spring:
                 - profile
         provider:
           keycloak:
-            authorization-uri: http://localhost:8080/auth/realms/service/protocol/openid-connect/auth
-            token-uri: http://localhost:8080/auth/realms/service/protocol/openid-connect/token
-            user-info-uri: http://localhost:8080/auth/realms/service/protocol/openid-connect/userinfo
-            jwk-set-uri: http://localhost:8080/auth/realms/service/protocol/openid-connect/certs
+            authorization-uri: http://localhost:8080/auth/realms/workshop/protocol/openid-connect/auth
+            token-uri: http://localhost:8080/auth/realms/workshop/protocol/openid-connect/token
+            user-info-uri: http://localhost:8080/auth/realms/workshop/protocol/openid-connect/userinfo
+            jwk-set-uri: http://localhost:8080/auth/realms/workshop/protocol/openid-connect/certs
             user-name-attribute: preferred_username - email
 
 
