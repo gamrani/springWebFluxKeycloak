@@ -17,6 +17,26 @@ spring:
   security:
     user:
       password: root
+    oauth2:
+      client:
+        registration:
+          keycloak:
+              client-id: library
+              client-secret: ecbcd764-98e1-479d-a4d0-60c4e72a9ffe
+              clientName: library
+              authorization-grant-type: authorization_code
+              redirectUri: '{baseUrl}/login/oauth2/code/{registrationId}'
+              scope:
+                - openid
+                - profile
+        provider:
+          keycloak:
+            authorization-uri: http://localhost:8080/auth/realms/service/protocol/openid-connect/auth
+            token-uri: http://localhost:8080/auth/realms/service/protocol/openid-connect/token
+            user-info-uri: http://localhost:8080/auth/realms/service/protocol/openid-connect/userinfo
+            jwk-set-uri: http://localhost:8080/auth/realms/service/protocol/openid-connect/certs
+            user-name-attribute: preferred_username - email
+
 
 server:
   error:

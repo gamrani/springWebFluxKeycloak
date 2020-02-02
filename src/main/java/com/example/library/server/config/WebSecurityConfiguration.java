@@ -28,6 +28,10 @@ public class WebSecurityConfiguration {
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity serverHttpSecurity){
         return serverHttpSecurity.csrf().disable()
+                .oauth2Client()
+                .and()
+                .oauth2Login()
+                .and()
                 .authorizeExchange()
                 .pathMatchers(HttpMethod.POST, "/books/{bookId}/borrow")
                 .hasRole(Role.LIBRARY_USER.name())

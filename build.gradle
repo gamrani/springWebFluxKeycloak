@@ -58,6 +58,7 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-webflux')
     implementation('org.apache.commons:commons-lang3')
     implementation('org.springframework.boot:spring-boot-starter-security')
+    implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
     implementation('org.springframework.security:spring-security-test')
     implementation('org.modelmapper:modelmapper:2.3.5')
     developmentOnly('org.springframework.boot:spring-boot-devtools')
